@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Dstat.one - Professional Layer4 & Layer7 Dstats</title>
+
+    <meta name="title" content="Dstat.one - Professional Layer4 & Layer7 Dstats" />
+    <meta name="description" content="Simplified, private L4 and L7 Dstats with real-time graphs. Monitor your server performance with precision. Secure, fast, and reliable Dstat solutions for every use case." />
+    <meta name="keywords" content="Dstat, Layer4, L4, L7, Layer7, dstat l4, dstat l7, dstat layer7, dstat layer4, Dstat Monitoring, Real-time Dstat, Server Stats, Network Monitoring, System Performance, DDoS Protection, Stress Testing, Resource Usage, Server Load, Traffic Analysis, vedbex, dstatspace, dstatst, dstatonline, dstatcc, dstatone, dstatcc, dstatlove, IP Stresser, IP Booter, Best IP Stresser, Free IP Stresser, Booter Service, Stresser Service, DDoS Booter, DDoS Stresser, Layer4 Booter, Layer7 Booter, DDoS Attack Tools, DDoS Testing, Network Stress Test, Server Stress Test, Booter Panel, Stresser Panel, DDoS-for-Hire, DDoS-as-a-Service, Booter Tools, Stresser Tools, IP Stresser Online, Booter Services, Stresser Services, DDoS Simulation, DDoS Protection Test, DDoS Mitigation, Booter Website, Stresser Website, Dstat监控, 实时Dstat, 服务器监控, 网络监控, 系统性能, DDoS防护, 压力测试, 资源使用, 服务器负载, 流量分析, 网络统计, 服务器状态, 性能优化, 数据中心监控, 服务器管理工具, 网络延迟测试, 带宽监控, 服务器安全, 实时数据分析, IP Stresser工具, 免费IP Stresser, Booter服务, DDoS攻击工具, 压力测试工具, 网络压力测试, DDoS防御测试, 服务器压力测试, DDoS压力测试, Dstat监控工具, Dstat命令, Dstat教程, Dstat安装, Dstat使用, Dstat插件, Dstat文档, Dstat示例, IP Stresser español, Booter servicios, Herramientas de estrés IP, Pruebas de DDoS, Servicios de Booter, Ataques DDoS, Protección DDoS, Pruebas de estrés de red, Monitoreo de servidores, Análisis de tráfico, Seguridad de red, Estrés de capa 4, Estrés de capa 7" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dstat.one/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dstat.one/" />
+    <meta property="og:title" content="Dstat.one - Professional Layer4 & Layer7 Dstats" />
+    <meta property="og:description" content="Private L4 & L7 Dstats with powerful live graphs. Secure and effective monitoring for stress testing. Always online graphs for Dstats L4 & L7, we never disappoint." />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://dstat.one/" />
+    <meta name="twitter:title" content="Dstat.one - Professional Layer4 & Layer7 Dstats" />
+    <meta name="twitter:description" content="Advanced L4 & L7 Dstat services with real-time stats, stress testing, and attack analysis. Monitor and optimize your infrastructure with ease." />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script async data-id="101486735" src="//static.getclicky.com/js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        :root {
+            --main-padding: 1rem;
+            --content-bg: #22272b;
+            --dropdown-bg: #22272b;
+            --dropdown-hover: #2a3035;
+            --topbar-bg-color: #142130;
+            --topbar-text-color: #fff;
+        }
+        
+        body {
+            background-color: #1b1e22;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .page-container {
+            padding-left: var(--main-padding);
+            padding-right: var(--main-padding);
+        }
+
+        .logo-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0.75rem 0 2.5px 0;
+            position: relative;
+        }
+
+        .logo-bar a {
+            text-decoration: none;
+        }
+
+        .left-icons, .right-icons {
+            display: flex;
+            align-items: center;
+            gap: 7.5px; /* spacing between icons */
+            flex: 1; /* allows them to grow and push logo to center */
+        }
+
+        .right-icons {
+            justify-content: flex-end;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: white;
+            letter-spacing: -0.5px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            width: max-content; /* makes sure logo doesn't stretch */
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 767.98px) {
+            .logo {
+                position: static;
+                transform: none;
+                order: 1; /* puts logo in middle */
+                flex-grow: 1;
+                text-align: center;
+            }
+            
+            .left-icons {
+                order: 0; /* left icons first */
+            }
+            
+            .right-icons {
+                order: 2; /* right icons last */
+            }
+            
+            .left-icons, .right-icons {
+                flex: initial;
+            }
+        }
+        
+        .topbar {
+            background-color: var(--content-bg);
+            color: white;
+            padding: 4.5px;
+            margin: 0 0 2.5px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px var(--content-bg);
+        }
+        
+        .chart-container {
+            background-color: var(--content-bg);
+            box-shadow: 0 2px 4px var(--content-bg);
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 15px;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%; /* Positions the dropdown right below the button */
+            left: 0;
+            background-color: var(--dropdown-bg);
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            z-index: 1000; /* Ensure it appears above other elements */
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown:hover .dropdown-menu,
+        .dropdown.show .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            color: #e0e0e0;
+            transition: all 0.2s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--dropdown-hover);
+            color: white;
+            padding-left: 25px;
+        }
+        
+        .dropdown-item:hover::after {
+            content: "→";
+            position: absolute;
+            right: 15px;
+            color: #6d7a83;
+        }
+        
+        .dropdown-header {
+            color: #b6c6d3;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 0.5rem;
+            border-bottom: 1px solid #517196;
+        }
+        
+        .nav-link.dropdown-toggle::after {
+            display: inline-block;
+            margin-left: 0.5em;
+            vertical-align: 0.255em;
+            content: "";
+            border-top: 0.35em solid;
+            border-right: 0.35em solid transparent;
+            border-bottom: 0;
+            border-left: 0.35em solid transparent;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .nav-link.dropdown-toggle::after,
+        .show .nav-link.dropdown-toggle::after {
+            transform: rotate(-180deg);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+        
+        .nav-link:hover {
+            color: #fff !important;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6f7f8b;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::before {
+            width: 100%;
+        }
+        
+        .nav-link.active::before {
+            width: 100%;
+            background-color: #4e5b68;
+        }
+
+        .rounded-flag {
+            display: inline-block;
+            border-radius: 25%;
+            overflow: hidden;
+        }
+
+        .chart-container {
+            position: relative;
+        }
+        
+        #myChart {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+        }
+
+        #text {
+            z-index: 3;
+        }
+        
+        .chart-background {
+            margin-top: 70px;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./../../../background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        .newsbar {
+            background-color: var(--content-bg);
+            color: var(--topbar-text-color);
+            padding: 7.5px 0 7.5px 0;
+            border-radius: 5px;
+            margin-top: 15px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 4px var(--content-bg);
+        }
+
+        .newsbar a {
+            color: #788997;
+        }
+
+        .newsbar-content {
+            font-weight: bold;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        @media (max-width: 767.98px) {
+            .topbar .me-3[href*="t.me/forenix56"] {
+                display: none;
+            }
+        }
+
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .notification {
+            min-width: 50px;
+            padding: 15px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .notification.success {
+            background-color: #677179;
+        }
+        .notification.failed {
+            background-color: #e74c3c;
+        }
+
+        .dstat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .dstat-category {
+            margin-bottom: 25px;
+        }
+
+        .dstat-category h3 {
+            color: #b6c6d3;
+            border-bottom: 1px solid #415a77;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dstat-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #142130;
+            color: #e0e0e0;
+            border: 1px solid #2a3a50;
+            border-radius: 5px;
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            gap: 12px;
+        }
+
+        .dstat-btn:hover {
+            background-color: #1a2a3a;
+            border-color: #b6c6d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .dstat-flag {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a2a3a;
+        }
+
+        .dstat-flag .fi {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .dstat-btn-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .dstat-name {
+            font-weight: 500;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .dstat-type {
+            font-size: 0.75rem;
+            color: #8a9db3;
+        }
+
+        .dstat-badge {
+            flex-shrink: 0;
+            background-color: #0d1b2a;
+            border: 1px solid #2a3a50;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .dstat-btn:hover .dstat-badge {
+            background-color: #1a2a3a;
+            border-color: #b6c6d3;
+        }
+
+        .dstat-btn::after {
+            content: "→";
+            position: absolute;
+            right: 15px;
+            color: #b6c6d3;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .dstat-btn:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .dstat-btn:hover .dstat-badge {
+            margin-right: 20px;
+        }
+
+        .banner-container {
+            background-color: var(--content-bg);
+            border-radius: 4px;
+            padding: 5px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px var(--content-bg);
+        }
+        
+        .banner-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: space-between;
+        }
+        
+        .banner {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .banner img {
+            width: 100%;
+            max-height: 70px;
+            min-height: 70px;
+            border-radius: 2px;
+        }
+
+        .loading-topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: transparent;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .loading-topbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #b6c6d3;
+            animation: loadingAnimation 2s linear infinite;
+            transform: translateX(-100%);
+        }
+
+        @keyframes loadingAnimation {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dstat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-row {
+                flex-direction: column;
+            }
+            
+            .banner {
+                min-width: calc(50% - 15px);
+            }
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .pagination button {
+            border: 1px solid #525b61;
+            background-color: #282d30;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination button:hover {
+            background-color: #282d30;
+            border-color: #85939c;
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .page-info {
+            color: #99a9b4;
+            font-weight: bold;
+        }
+
+        .network-container {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .network-sidebar {
+            width: 500px;
+            background-color: var(--content-bg);
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: 0 2px 4px var(--content-bg);
+        }
+        
+        .network-main {
+            flex: 1;
+            background-color: var(--content-bg);
+            border-radius: 4px;
+            padding-right: 15px;
+            padding-left: 15px;
+            padding-bottom: 5px;
+            box-shadow: 0 2px 4px var(--content-bg);
+        }
+        
+        .search-container {
+            margin-bottom: 15px;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #525b61;
+            border-radius: 5px;
+            background-color: #282d30;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        input:focus {
+            outline: none;
+        }
+        
+        .devices-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .devices-table th, 
+        .devices-table td {
+            padding: 12px 15px;
+            text-align: left;
+            color: #fff;
+            border-bottom: 1px solid #4a5358;
+        }
+        
+        .devices-table th {
+            background-color: #282D30;
+            position: sticky;
+            top: 0;
+        }
+        
+        .devices-table tr:hover {
+            background-color: #4e575c;
+            cursor: pointer;
+        }
+        
+        .devices-table .selected {
+            background-color: #4e575c;
+        }
+        
+        .device-info {
+            margin-top: 20px;
+            background-color: #282D30;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            width: 120px;
+            color: #9da7ad;
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        .chart-wrapper {
+            position: relative;
+            height: 700px;
+        }
+        
+        .chart-background {
+            margin-top: 70px;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./../../../background.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        @media (max-width: 767.98px) {
+            .network-container {
+                flex-direction: column;
+            }
+            
+            .network-sidebar {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .network-main {
+                width: 100%;
+            }
+            
+            .chart-wrapper {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading-topbar" id="loadingTopbar"></div>
+
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <div class="page-container">
+        <div class="logo-bar">
+            <div class="left-icons">
+                <a href="https://uptime.dstat.one" target="_blank" class="icon">
+                    <i class="fa-solid fa-signal fa-2xs" title="Uptime"></i>
+                </a>
+                <a class="icon">
+                    <i class="fa-solid fa-up-right-and-down-left-from-center fa-2xs" title="Zoom"></i>
+                </a>
+            </div>
+            <div class="logo" data-translate="dstatone"></div>
+            <div class="right-icons">
+                <div class="dropdown icon">
+                    <a class="nav-link dropdown-toggle text-white" id="languageDropdown" style="cursor: pointer;font-size: 15px;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-language me-1"></i> <span id="language"></span>
+                    </a>
+                    <ul class="dropdown-menu" style="min-width: 150px;">
+                        <li><a class="dropdown-item" style="cursor: pointer;" onclick="change(`en`);"><span class="fi fi-gb me-1"></span> English</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;"  onclick="change(`cn`);"><span class="fi fi-cn me-1"></span> Chinese</a></li>
+                        <li><a class="dropdown-item" style="cursor: pointer;"  onclick="change(`es`);"><span class="fi fi-es me-1"></span> Spanish</a></li>
+                    </ul>
+                </div>
+                <a href="https://t.me/kaesekueche" target="_blank" class="icon">
+                    <i class="fa-brands fa-telegram fa-xs" title="Telegram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="topbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a onclick="window.location = document.location.origin + '/' + document.location.pathname.split('/')[1] + '/'" style="cursor: pointer;" class="nav-link text-white" id="home"><i class="fa-solid fa-couch"></i> <c data-translate="home"></c></a></li>
+                        <li class="nav-item"><a onclick="window.location = document.location.origin + '/' + document.location.pathname.split('/')[1] + '/stressers'" style="cursor: pointer;" class="nav-link text-white"><i class="fa-solid fa-dragon"></i> <c data-translate="top stressers"></c></a></li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" id="l4" style="cursor: pointer;"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-chart-line"></i> <c data-translate="layer4"></c>
+                            </a>
+                            <ul class="dropdown-menu" id="layer4">
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" id="l7" style="cursor: pointer;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-chart-line"></i> <c data-translate="layer7"></c>
+                            </a>
+                            <ul class="dropdown-menu" id="layer7">
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a onclick="window.location = document.location.origin + '/' + document.location.pathname.split('/')[1] + '/search'" style="cursor: pointer;" class="nav-link text-white active"><i class="fa-solid fa-magnifying-glass"></i> <c data-translate="search"></c></a></li>
+                    </ul>
+                </nav>
+                <a class="me-3" href="https://t.me/forenix56" target="_blank" style="text-decoration: none;color:#e0e0e0;" data-translate="support"></a>
+            </div>
+        </div>
+
+        <div class="newsbar">
+            <div class="newsbar-content" data-translate="news"></div>
+        </div>
+
+        <div class="banner-container">
+            <div class="banner-row">
+                <a href="https://vacstresser.ru/?r=dstatone" target="_blank" class="banner"><img src="../../banners/vacstresser.gif" alt="Banner 1"></a>
+                <a href="https://silencestress.st/?r=dstatone" target="_blank" class="banner"><img src="../../banners/silencestresser.gif" alt="Banner 2"></a>
+                <a href="https://goliathstress.st/?=dstatone" target="_blank" class="banner"><img src="../../banners/goliahstress.gif" alt="Banner 3"></a>
+                <a href="https://dumpcord.cc/?r=dstatone" target="_blank" class="banner"><img src="../../banners/dumpcord.gif" alt="Banner 4"></a>
+            </div>
+        </div>
+
+        <div class="network-container">
+            <div class="network-sidebar">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search ISPs, ASNs or Gbps..">
+                </div>
+                <table class="devices-table">
+                    <thead>
+                        <tr>
+                            <th data-translate="ip address"></th>
+                            <th data-translate="isp"></th>
+                            <th data-translate="bandwidth"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="devicesTableBody">
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <button id="prevPage" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <span class="page-info" id="pageInfo">Page 1</span>
+                    <button id="nextPage">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="device-info" id="deviceInfo">
+                    <div class="info-row">
+                        <div class="info-label">IP Address:</div>
+                        <div class="info-value" id="info-ip">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">ASN & ISP:</div>
+                        <div class="info-value" id="info-asn">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Cores:</div>
+                        <div class="info-value" id="info-cores">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">RAM:</div>
+                        <div class="info-value" id="info-ram">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Bandwidth:</div>
+                        <div class="info-value" id="info-bandwidth">-</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Last Seen:</div>
+                        <div class="info-value" id="info-lastSeen">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="network-main">
+                <div class="chart-container">
+                    <center id="text"><h5 style="color:white;font-size: large;"></h5></center>
+                    <div class="chart-background"></div>
+                    <div class="chart-wrapper">
+                        <canvas id="bandwidthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="banner-container">
+            <div class="banner-row">
+                    <a href="https://csters.to/?r=dstatone" target="_blank" class="banner"><img src="../../banners/csters.gif" alt="Banner 5"></a>
+                    <a href="https://fluxstress.to/register?ref=5bf9e92467ef0" target="_blank" class="banner"><img src="../../banners/fluxstress.gif" alt="Banner 6"></a>
+                    <a href="https://t.me/privatecnc" target="_blank" class="banner"><img src="../../banners/privatecnc.gif" alt="Banner 7"></a>
+                    <a href="https://satellitestresser.st/?r=dstatone" target="_blank" class="banner"><img src="../../banners/satellitestresser.gif" alt="Banner 8"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        
+        const translations = {
+            en: {
+                "dstatone": `dstat<span style="color: #8594a0;">.one</span>`,
+                "home": "Home",
+                "top stressers": "Top Stressers",
+                "layer4": "Layer4",
+                "layer7": "Layer7",
+                "search": "Search",
+                "support": "Support",
+                "news": `<i class="fa-brands fa-firefox" style="color:orange"></i> Use all our dstats now on <a href="https://t.me/lets_count_bot" target="_blank">Let's Count</a> via Telegram! Or join our Community directly via <a href="https://t.me/kaesekueche" target="_blank">@kaesekueche</a>`,
+                "language": "Language",
+                "unprotected": "Unprotected",
+                "protected": "Protected",
+                "ip address": "IP Address",
+                "isp": "ISP",
+                "bandwidth": "Bandwidth"
+            },
+            cn: {
+                "dstatone": `dstat<span style="color: #8594a0;">.一</span>`,
+                "home": "家",
+                "top stressers": "最令人紧张的因素",
+                "layer4": "层4",
+                "layer7": "层7",
+                "search": "搜索",
+                "support": "支持",
+                "news": `<i class="fa-brands fa-firefox" style="color:orange"></i> 加入我们 <a href="https://t.me/kaesekueche" target="_blank">电报群</a> 宣传您的业务! 我们回来了并且我们会留下来!`,
+                "language": "语言",
+                "unprotected": "无保护",
+                "protected": "受保护",
+                "ip address": "IP 地址",
+                "isp": "ISP",
+                "bandwidth": "带宽"
+            },
+            "es": {
+                "dstatone": `dstat<span style="color: #8594a0;">.one</span>`,
+                "home": "Menú",
+                "top stressers": "Top Stressers",
+                "layer4": "Capa4",
+                "layer7": "Capa7",
+                "l4dstats": "Capa4 Dstats",
+                "l7dstats": "Capa7 Dstats",
+                "search": "Buscar",
+                "support": "Soporte",
+                "news": `<i class="fa-brands fa-firefox" style="color:orange"></i> Unete a <a href="https://t.me/kaesekueche" target="_blank">Grupo de Telegram</a> & promociona tu negocio! Conecta con nosotros, estamos de vuelta y vamos a quedarnos!`,
+                "language": "Idioma",
+                "unprotected": "Desprotegido",
+                "protected": "Protegido",
+                "url": "URL",
+                "totalbandwidth": "Total de Banda RX",
+                "totalpackets": "Total de Paquetes RX",
+                "totalrequests": "Peticiones totales",
+                "activeconns": "Conexiones activas",
+                "copied": "Copiado al portapapeles!",
+                "ip address": "Dirección IP",
+                "isp": "ISP",
+                "bandwidth": "Banda"
+            }
+        };
+
+        let currentLang = document.location.pathname.split("/")[1];
+        if(currentLang === "es") {
+            document.getElementById("language").innerText = `Spanish`;
+        } else if(currentLang !== "cn") {
+            document.getElementById("language").innerText = `English`;
+            if(getCookie("language") === undefined) {
+                document.cookie = "language=" + "en" + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/";
+                window.location.pathname = window.location.pathname.replace(document.location.pathname.split("/")[1], "en");
+            }
+        } else {
+            document.getElementById("language").innerText = `Chinese`;
+            if(getCookie("language") === undefined) {
+                document.cookie = "language=" + "cn" + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/";
+                window.location.pathname = window.location.pathname.replace(document.location.pathname.split("/")[1], "cn");
+            }
+        }
+
+        if(currentLang !== getCookie("language") && getCookie("language") !== undefined) {
+            window.location.pathname = window.location.pathname.replace(document.location.pathname.split("/")[1], getCookie("language"));
+        }
+
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        function change(lang) {
+            document.cookie = "language=" + lang + "; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/";
+            window.location.pathname = window.location.pathname.replace(document.location.pathname.split("/")[1], lang);
+        }
+
+        const style = document.createElement('style');
+        style.textContent = `
+            #flagContainer {
+                cursor: pointer;
+                position: relative;
+            }
+            #flagContainer:hover #languageDropdown {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            if(currentLang !== "cn") {
+                document.getElementById("language").innerText = `English`;
+            } else {
+                document.getElementById("language").innerText = `Chinese`;
+            }
+            applyTranslations();
+            
+            const langName = lang === 'en' ? 'English' : '中文';
+            showNotification(`Language set to ${langName}`, 'success');
+        }
+
+        function applyTranslations() {
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                el.innerHTML = translations[currentLang][key] || translations['en'][key];
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', applyTranslations);
+
+    document.getElementById('loadingTopbar').style.display = 'block';
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            document.getElementById('loadingTopbar').style.display = 'none';
+        }, 500);
+    });
+  
+    function showNotification(message, type = 'success') {
+        const container = document.getElementById('notificationContainer');
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerText = message;
+        container.appendChild(notification);
+
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                container.removeChild(notification);
+            }, 300);
+        }, 5000);
+    }
+
+    function copy(id) {
+        let copy = document.getElementById(id);
+        navigator.clipboard.writeText(copy.innerText);
+        showNotification("Copied to clipboard!", "success");
+    }
+
+    window.addEventListener('error', function() {
+        document.getElementById('loadingTopbar').style.display = 'none';
+    });
+
+        fetch('https://api.dstat.one/list', {
+            method: 'GET'
+        }).then(async (response) => {
+            var json = await response.json();
+            let lang = "/" + currentLang;
+            if(response.status === 200) {
+                if(json['unprotected-l4']) {
+                    document.getElementById("layer4").innerHTML += `<li><h6 class="dropdown-header">${translations[currentLang].unprotected}</h6></li>`;
+                    json['unprotected-l4'].forEach(item => {
+                        document.getElementById("layer4").innerHTML += `<li><a class="dropdown-item" href="${lang}/l4/` + item.name + `">` + item.nickname + ` <span class="badge me-2" style="border: 1px solid #0d1b2a;">~` + formatValue("l4", item.amount) + `</span></a></li>`;
+                    });
+                }
+                
+                if(json['protected-l4']) {
+                    document.getElementById("layer4").innerHTML += `<li><h6 class="dropdown-header">${translations[currentLang].protected}</h6></li>`;
+                    json['protected-l4'].forEach(item => {
+                        document.getElementById("layer4").innerHTML += `<li><a class="dropdown-item" href="${lang}/l4/` + item.name + `">` + item.nickname + ` <span class="badge me-2" style="border: 1px solid #0d1b2a;">~` + formatValue("l4", item.amount) + `</span></a></li>`;
+                    });
+                }
+                
+                if(json['unprotected-l7']) {
+                    document.getElementById("layer7").innerHTML += `<li><h6 class="dropdown-header">${translations[currentLang].unprotected}</h6></li>`;
+                    json['unprotected-l7'].forEach(item => {
+                        document.getElementById("layer7").innerHTML += `<li><a class="dropdown-item" href="${lang}/l7/` + item.name + `">` + item.nickname + ` <span class="badge me-2" style="border: 1px solid #0d1b2a;">~` + formatValue("l7", item.amount) + `</span></a></li>`;
+                    });
+                }
+                
+                if(json['protected-l7']) {
+                    document.getElementById("layer7").innerHTML += `<li><h6 class="dropdown-header">${translations[currentLang].protected}</h6></li>`;
+                    json['protected-l7'].forEach(item => {
+                        document.getElementById("layer7").innerHTML += `<li><a class="dropdown-item" href="${lang}/l7/` + item.name + `">` + item.nickname + ` <span class="badge me-2" style="border: 1px solid #0d1b2a;">~` + formatValue("l7", item.amount) + `</span></a></li>`;
+                    });
+                }
+            }
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+    function formatValue(mode, amount) {
+        let formattedValue;
+
+        if (mode === "l7") {
+            if (amount >= 1000000) {
+                formattedValue = `${(amount / 1000000)}Mrs`;
+            } else if (amount >= 1000) {
+                formattedValue = `${(amount / 1000)}Krs`;
+            } else {
+                formattedValue = `${amount}RS`;
+            }
+        } else if (mode === "l4") {
+            if (amount >= 1000000) {
+                formattedValue = `${(amount / 1000000)}Tbps`;
+            } else if (amount >= 1000) {
+                formattedValue = `${(amount / 1000)}Gbps`;
+            } else {
+                formattedValue = `${amount}Mbps`;
+            }
+        }
+
+        return formattedValue;
+    }
+
+    function formatNumber(number) {
+        const suffixes = ["", " thousand", " million", " billion"];
+        const base = 1000;
+
+        if (typeof number !== "number") {
+            throw new Error("Input must be a number.");
+        }
+
+        const isNegative = number < 0;
+        number = Math.abs(number);
+
+        if (number < base) {
+            return (isNegative ? "-" : "") + number.toString();
+        }
+
+        const suffixIndex = Math.floor(Math.log10(number) / 3);
+        const scaledNumber = number / Math.pow(base, suffixIndex);
+        const formattedNumber = scaledNumber.toFixed(2).replace(/\.0+$/, "");
+
+        return (isNegative ? "-" : "") + formattedNumber + suffixes[suffixIndex];
+    }
+
+    function convertToBestUnit(kilobits) {
+        const isNegative = kilobits < 0;
+        kilobits = Math.abs(kilobits);
+
+        if (kilobits >= 1024 * 1024) {
+            const gigabits = kilobits / (1024 * 1024);
+            return isNegative ? `-${gigabits.toFixed(2)} Gbps` : `${gigabits.toFixed(2)} Gbps`;
+            } else if (kilobits >= 1024) {
+            const megabits = kilobits / 1024;
+            return isNegative ? `-${megabits.toFixed(2)} Mbps` : `${megabits.toFixed(2)} Mbps`;
+            } else {
+            if (kilobits >= 8) {
+                return isNegative ? `-${kilobits.toFixed(2)} kb` : `${kilobits.toFixed(2)} kb`;
+            } else {
+                const kilobytes = kilobits / 8;
+                return isNegative ? `-${kilobytes.toFixed(2)} KB` : `${kilobytes.toFixed(2)} KB`;
+            }
+        }
+    }
+
+    function formatNumberDot(num) {
+        let numStr = num.toString();
+        let formatted = "";
+          
+        for (let i = 0; i < numStr.length; i++) {
+            formatted = numStr[numStr.length - 1 - i] + formatted;
+            if ((i + 1) % 3 === 0 && i + 1 !== numStr.length) {
+                formatted = "." + formatted;
+            }
+        }
+          
+        return formatted;
+    }
+
+    const API_URL = "https://api.dstat.one/all";
+    const ITEMS_PER_PAGE = 10;
+    
+    let allIPs = [];
+    let currentPage = 1;
+    let totalPages = 1;
+    let filteredIPs = [];
+    let selectedIP = null;
+    let searchTerm = '';
+    let debounceTimer;
+
+    const ctx = document.getElementById('bandwidthChart').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: "line",
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: "Total Bandwidth In",
+                        fill: true,
+                        borderColor: '#6c757c',
+                        tension: 0.05,
+                        data: []
+                    },
+                    {
+                        label: "Total Packets In",
+                        fill: true,
+                        borderColor: '#949fa8',
+                        tension: 0.05,
+                        data: []
+                    },
+                    {
+                        label: "Active Connections",
+                        hidden: true,
+                        fill: true,
+                        tension: 0.05,
+                        borderColor: '#c2cdd6',
+                        data: []
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    },
+                    interaction: {
+                        intersect: false
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        if (`${context.dataset.label}`.includes("Bandwidth")) {
+                                            label += convertToBestUnit(context.parsed.y);
+                                        } else {
+                                            label += formatNumber(context.parsed.y);
+                                        }
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value, index, values) {
+                                    return convertToBestUnit(value);
+                                },
+                            },
+                        },
+                    }
+                }
+    });
+
+    setInterval(async () => {
+        if (!selectedIP) return;
+        
+        fetch('https://api.dstat.one/stats', {
+            method: 'POST',
+            body: JSON.stringify({
+                "ip": selectedIP.ip,
+                "port": selectedIP.port,
+                "type": "l4"
+            }),
+        }).then(async (response) => {
+            var json = await response.json();
+            if(chart.data.datasets[0].data.length >= 60) {
+                chart.data.datasets[0].data.shift();
+                chart.data.datasets[1].data.shift();
+                chart.data.datasets[2].data.shift();
+                chart.data.datasets[0].data.push(json.mbits)
+                chart.data.datasets[1].data.push(json.pps)
+                chart.data.datasets[2].data.push(json.conns)
+                chart.update();
+            } else {
+                chart.data.labels.push("")
+                chart.data.datasets[0].data.push(json.mbits)
+                chart.data.datasets[1].data.push(json.pps)
+                chart.data.datasets[2].data.push(json.conns)
+                chart.update();
+            }
+        });
+    }, 1500)
+
+    // Format date/time
+    function formatDateTime(timestamp) {
+        if (!timestamp) return "Unknown";
+        
+        const date = new Date(timestamp);
+        return date.toLocaleString();
+    }
+
+    async function fetchIPs(page = 1, search = '') {
+        try {
+            let url = `${API_URL}?page=${page}`;
+            if (search) {
+                url += `&search=${encodeURIComponent(search)}`;
+            }
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data && data.data) {
+                const ipsArray = Object.entries(data.data).map(([ip, details]) => {
+                    return {
+                        ip,
+                        ...details,
+                        asn: `AS${details.asn}`,
+                        bandwidth: details.bandwidth || 0
+                    };
+                });
+                
+                allIPs = ipsArray;
+                filteredIPs = [...ipsArray];
+                totalPages = data.pagination?.totalPages || 1;
+                
+                updatePage();
+                
+                const params = new URLSearchParams(window.location.search);
+                const ipParam = params.get('ip');
+
+                if(!ipParam) {
+                    selectIP(filteredIPs[0]);
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching IP data:", error);
+        }
+    }
+
+    function updateQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        
+        // Always keep the search term
+        if (searchTerm) {
+            params.set('s', searchTerm);
+        } else {
+            params.delete('s');
+        }
+        
+        // Keep the IP if selected
+        if (selectedIP) {
+            params.set('ip', selectedIP.ip);
+        } else {
+            params.delete('ip');
+        }
+        
+        // Keep the page number
+        params.set('page', currentPage);
+        
+        // Update the URL without reloading
+        const newUrl = window.location.pathname + '?' + params.toString();
+        window.history.pushState({ path: newUrl }, '', newUrl);
+    }
+
+    function loadFromQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const ipParam = params.get('ip');
+        const pageParam = parseInt(params.get('page')) || 1;
+        const searchParam = params.get('s') || '';
+        
+        // Set the search input value
+        if (searchParam) {
+            document.getElementById('searchInput').value = searchParam;
+            searchTerm = searchParam;
+        }
+        
+        // Set the page
+        currentPage = pageParam;
+        
+        // Fetch data with the search term and page
+        fetchIPs(currentPage, searchTerm).then(() => {
+            // After data is loaded, select the IP if specified
+            if(ipParam) {
+                const ipData = allIPs.find(item => item.ip === ipParam);
+                if(ipData) {
+                    selectIP(ipData);
+                }
+            }
+        });
+    }
+
+    function populateTable(ips, page = 1) {
+        const tableBody = document.getElementById('devicesTableBody');
+        tableBody.innerHTML = '';
+        
+        ips.forEach(ipData => {
+            const row = document.createElement('tr');
+            row.dataset.ip = ipData.ip;
+            row.innerHTML = `
+                <td>${ipData.ip}</td>
+                <td>${ipData.isp}</td>
+                <td>${ipData.bandwidth} Gbps</td>
+            `;
+            row.addEventListener('click', () => selectIP(ipData, row));
+            
+            if (selectedIP && selectedIP.ip === ipData.ip) {
+                row.classList.add('selected');
+            }
+            
+            tableBody.appendChild(row);
+        });
+        
+        document.getElementById('prevPage').disabled = page <= 1;
+        document.getElementById('nextPage').disabled = page >= totalPages;
+        document.getElementById('pageInfo').textContent = `Page ${page} of ${totalPages}`;
+    }
+
+    function updatePage() {
+        populateTable(filteredIPs, currentPage);
+        updateQueryParams();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        searchTerm = e.target.value.trim();
+        
+        debounceTimer = setTimeout(() => {
+            currentPage = 1;
+            fetchIPs(currentPage, searchTerm);
+        }, 300);
+    });
+
+    document.getElementById('prevPage').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            fetchIPs(currentPage, searchTerm);
+        }
+    });
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            fetchIPs(currentPage, searchTerm);
+        }
+    });
+
+    function selectIP(ipData, row = null) {
+        selectedIP = ipData;
+
+        fetch('https://api.dstat.one/stats', {
+            method: 'POST',
+            body: JSON.stringify({
+                "ip": selectedIP.ip,
+                "port": selectedIP.port,
+                "type": "l4"
+            }),
+        }).then(async (response) => {
+            var json = await response.json();
+            chart.data.labels = [""];
+            chart.data.datasets[0].data = [json.mbits];
+            chart.data.datasets[1].data = [json.pps];
+            chart.data.datasets[2].data = [json.conns];
+            chart.update();
+        });
+        
+        document.querySelectorAll('.devices-table tr').forEach(r => {
+            r.classList.remove('selected');
+        });
+        
+        if (row) {
+            row.classList.add('selected');
+        } else {
+            const rowToSelect = document.querySelector(`.devices-table tr[data-ip="${ipData.ip}"]`);
+            if (rowToSelect) {
+                rowToSelect.classList.add('selected');
+            }
+        }
+        
+        document.getElementById('info-ip').textContent = ipData.ip;
+        document.getElementById('info-asn').textContent = ipData.asn + " " + ipData.isp || '-';
+        document.getElementById('info-cores').textContent = ipData.cores || '-';
+        document.getElementById('info-ram').textContent = ipData.ram ? `${ipData.ram} GB` : '-';
+        document.getElementById('info-bandwidth').textContent = ipData.bandwidth ? `${ipData.bandwidth} Gbps` : '-';
+        document.getElementById('info-lastSeen').textContent = formatDateTime(ipData.lastSeen);
+        
+        document.getElementById("text").innerHTML = `<h5 class="mb-1" style="color:white;font-size: large;">` + ipData.isp + `<br>IP: <a style="color:#b6c6d3;cursor: pointer;text-decoration: underline;" onclick="copy('ip');" id="ip">` + ipData.ip + `</a> <i class="fa-solid fa-copy" style="color:#b6c6d3;cursor: pointer;" onclick="copy('ip');"></i> & Port: <a style="color:#b6c6d3;cursor: pointer;text-decoration: underline;" onclick="copy('port');" id="port">` + "53" + `</a> <i class="fa-solid fa-copy" style="color:#b6c6d3;cursor: pointer;" onclick="copy('port');"></i></h5>`;
+        updateQueryParams();
+    }
+
+    window.addEventListener('load', () => {
+        loadFromQueryParams();
+    });
+
+    window.addEventListener('popstate', () => {
+        loadFromQueryParams();
+    });
+
+    let ratelimit = 0;
+    document.querySelector('.logo').addEventListener('click', function() {
+        if(ratelimit === 0) {
+            ratelimit = 1;
+            setTimeout(() => {
+                ratelimit = 0;
+            }, 15000);
+            function fireConfetti() {
+                confetti({
+                    particleCount: 300,
+                    spread: 160,
+                    startVelocity: 60,
+                    origin: { 
+                        x: Math.random(),
+                        y: Math.random() * 0.5 + 0.2
+                    },
+                    colors: ['#3b82f6', '#b6c6d3', '#1e3a8a', '#142130', '#ffffff']
+                });
+            }
+        
+            for (let i = 0; i < 5; i++) {
+                setTimeout(fireConfetti, i * 300);
+            }
+        } else {
+            showNotification("Confetti is on a cooldown for 15 seconds.", "failed")
+        }
+    });
+</script>
+</body>
+</html>
